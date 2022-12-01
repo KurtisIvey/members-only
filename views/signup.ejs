@@ -1,6 +1,6 @@
 <content class="signup__contentContainer">
   <h2 class="signup__message">Sign Up</h2>
-  <form action="POST" method="/signup">
+  <form action="/signUp" method="POST">
     <div class="signup__inputRow">
       <label>Username</label>
       <div class="signup__inputRowIconText">
@@ -51,6 +51,10 @@
         />
       </div>
     </div>
+    <% if (passwordError === true) { %>
+    <div class="signup__passwordError">Passwords do not match</div>
+    <% } %>
+
     <button class="submitBtn" type="submit">Register</button>
   </form>
 </content>
