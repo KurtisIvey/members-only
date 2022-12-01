@@ -1,14 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div>
-      <h1>home page</h1>
+<content class="home__contentContainer">
+  <h2 class="home__welcome">Welcome</h2>
+  <form action="POST" method="/login">
+    <div class="input__row">
+      <label>Email Address</label>
+      <div class="input__rowIconAndText">
+        <div class="loginIcon">✉️</div>
+        <input
+          name="email"
+          type="email"
+          placeholder="email@gmail.com"
+          required
+        />
+      </div>
     </div>
-  </body>
-</html>
+    <div class="input__row">
+      <label>Password</label>
+      <div class="input__rowIconAndText">
+        <div class="loginIcon">🔒</div>
+        <input
+          autocomplete="off"
+          name="password"
+          type="password"
+          maxlength="20"
+          required
+        />
+      </div>
+    </div>
+    <button class="submitBtn" type="submit">Log In</button>
+  </form>
+  <div class="home__signUpRow">
+    <h2>not registered?</h2>
+    <div class="button__row">
+      <button><a href="/signUp">Sign Up</a></button>
+      <button type="button">Guest Mode</button>
+    </div>
+  </div>
+</content>

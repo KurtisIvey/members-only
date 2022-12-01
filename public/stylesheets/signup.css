@@ -1,0 +1,60 @@
+.signup__contentContainer {
+    border-radius: 18px;
+    background-color: #eef3ff;
+    width: 300px;
+    height:fit-content;
+    padding: 10px;
+    padding-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.signup__message {
+    font-size: 2rem;
+    padding: 20px;
+    color: rgb(60, 79, 167);
+
+}
+
+.signup__inputRow {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 15px;
+    margin: 10px 0px;
+    border-radius: 18px;
+    background-color: white;
+}
+    .signup__inputRow label {
+        background-color: inherit;
+        color: rgb(76, 76, 76);
+        font-size: .8rem;
+
+    }
+    .signup__inputRow div {
+        display: flex;
+        margin-top: 3px;
+    }
+    .signup__inputRowIconText {
+        background-color: white;
+    }
+    
+    .loginIcon {
+        background-color: white;
+        padding-bottom: 2px;
+    }
+
+    .signup__inputRow div input {
+        background-color: white;
+        margin-left: 5px;
+        border: none;
+        
+    }
+    .signup__inputRow div input:focus {
+        outline: none;
+    }
+
+
+
+
+

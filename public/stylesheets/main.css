@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&display=swap');
+@import './home.css';
+@import './navbar.css';
+@import './signup.css';
+
+@import './shared/btn.css';
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+    background-color: rgb(213, 225, 252);
+}
+
+body {
+    box-sizing: border-box;
+    height: 100vh;
+    display:grid;
+    justify-items: center;
+    grid-template-rows: auto 1fr;
+    align-items: center;
+}
+
+h1,h2,h3,h4,h5 {
+    background-color: inherit;
+    text-align: center;
+}
+
+form {
+    background-color: inherit;
+}
+
+content {
+   
+}

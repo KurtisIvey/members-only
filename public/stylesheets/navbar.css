@@ -1,0 +1,38 @@
+nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+    nav div {
+        padding: 20px;
+    }
+    nav div a {
+        all: unset;
+    }
+
+    nav div a h1 {
+        font-size: 1.55rem;
+        cursor: pointer;
+        color: rgb(60, 79, 167);
+
+    }
+    nav div p {
+        color: rgb(76, 76, 76);
+        font-size: .75rem;
+    }
+
+nav ul {
+    display: flex;
+    padding: 20px;
+
+}
+    nav ul li {
+        all: unset;
+        margin: 0 10px;
+    }
+        nav ul li a  {
+            all: unset;
+            cursor: pointer;
+            color: rgb(60, 79, 167);
+
+        }

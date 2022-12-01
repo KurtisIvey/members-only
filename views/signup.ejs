@@ -1,0 +1,56 @@
+<content class="signup__contentContainer">
+  <h2 class="signup__message">Sign Up</h2>
+  <form action="POST" method="/signup">
+    <div class="signup__inputRow">
+      <label>Username</label>
+      <div class="signup__inputRowIconText">
+        <div class="loginIcon">👤</div>
+        <input name="username" type="text" placeholder="username" required />
+      </div>
+    </div>
+    <div class="signup__inputRow">
+      <label>Email Address</label>
+      <div class="signup__inputRowIconText">
+        <div class="loginIcon">✉️</div>
+        <input
+          name="email"
+          type="email"
+          placeholder="email@gmail.com"
+          required
+          oninvalid="this.setCustomValidity('Please enter a valid email such as joesmith@email.com')"
+        />
+      </div>
+    </div>
+    <div class="signup__inputRow">
+      <label>Password</label>
+      <div class="input__rowIconAndText">
+        <div class="loginIcon">🔒</div>
+        <input
+          autocomplete="off"
+          name="password"
+          type="text"
+          minlength="3"
+          maxlength="20"
+          required
+          oninvalid="this.setCustomValidity('Please enter a valid password 3 to 20 characters in length.')"
+        />
+      </div>
+    </div>
+    <div class="signup__inputRow">
+      <label>Confirm Password</label>
+      <div class="input__rowIconAndText">
+        <div class="loginIcon">🔒</div>
+        <input
+          autocomplete="off"
+          name="confirmPassword"
+          type="text"
+          minlength="3"
+          maxlength="20"
+          required
+          oninvalid="this.setCustomValidity('Please enter a valid password 3 to 20 characters in length.')"
+        />
+      </div>
+    </div>
+    <button class="submitBtn" type="submit">Register</button>
+  </form>
+</content>

@@ -1,6 +1,12 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 const port = 3001;
+// simplifies ejs by using layouts
+const expressLayouts = require("express-ejs-layouts");
+
+//routes
+const indexRouter = require("./routes/index.route");
 
 // hide api key
 require("dotenv").config();
@@ -17,13 +23,15 @@ var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // view engine setup
-app.set("views", (__dirname, "views"));
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
+app.set("layout", "layouts/layout");
+app.use(expressLayouts);
 
-app.get("/", (req, res) => {
-  console.log(process.env);
-  res.send("hello world");
-});
+app.use("/", indexRouter);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
