@@ -36,6 +36,9 @@
         />
       </div>
     </div>
+    <% if (passwordError === true) { %>
+    <div class="signup__passwordError">Passwords do not match</div>
+    <% } %>
     <div class="signup__inputRow">
       <label>Confirm Password</label>
       <div class="input__rowIconAndText">
