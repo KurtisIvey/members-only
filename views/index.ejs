@@ -1,25 +1,29 @@
 <content class="home__contentContainer">
   <h2 class="home__welcome">Welcome</h2>
-  <form action="/login" method="POST">
+  <% if (failureMessage === true) { %>
+  <div class="signup__passwordError">Passwords do not match</div>
+  <% } %>
+  <form action="/" method="POST">
     <div class="input__row">
-      <label>Email Address</label>
+      <label for="username">Username</label>
       <div class="input__rowIconAndText">
-        <div class="loginIcon">✉️</div>
+        <div class="loginIcon">👤</div>
         <input
-          name="email"
-          type="email"
-          placeholder="email@gmail.com"
+          name="username"
+          id="username"
+          type="text"
+          placeholder="username"
           required
         />
       </div>
     </div>
     <div class="input__row">
-      <label>Password</label>
+      <label for="password">Password</label>
       <div class="input__rowIconAndText">
         <div class="loginIcon">🔒</div>
         <input
-          autocomplete="off"
           name="password"
+          id="password"
           type="password"
           maxlength="20"
           required

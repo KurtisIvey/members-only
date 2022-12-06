@@ -6,12 +6,10 @@ const User = require("../models/userSchema");
 
 router.get("/", userController.login);
 
+router.post("/", userController.login__post);
+
 router.get("/signUp", userController.signup__get);
 
 router.post("/signUp", userController.signup__post);
-
-router.get("/login", (req, res) => {
-  res.send("login page");
-});
 
 module.exports = router;

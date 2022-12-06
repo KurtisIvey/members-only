@@ -1,45 +1,38 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/userSchema.js");
-const validPassword = require("../utilities/passwordUtils").validPassword;
+const bcrypt = require("bcrypt");
 
-const customFields = {
-  usernameField: "username",
-  passwordField: "password",
-};
+passport.use(
+  //same usernames collide
+  new LocalStrategy((username, password, done) => {
+    User.findOne({ username: username.trim() }, (err, user) => {
+      //2nd argument mongoose findone is a callback function
+      if (err) return done(err);
 
-const verifyCallback = (username, password, done) => {
-  User.findOne({ username: username })
-    .then((user) => {
       if (!user) {
-        return done(null, false);
+        return done(null, false, { message: "Incorrect username" });
       }
-
-      const isValid = validPassword(password, user.hash, user.salt);
-
-      if (isValid) {
-        return done(null, user);
-      } else {
-        return done(null, false);
-      }
-    })
-    .catch((err) => {
-      done(err);
+      bcrypt.compare(password, user.password, (err, res) => {
+        console.log("reaching bcrypt compare");
+        if (res) {
+          //passwords match
+          return done(null, user);
+        } else {
+          //passwords do not match
+          return done(null, false, { message: "Incorrect password" });
+        }
+      });
     });
-};
+  })
+);
 
-const strategy = new LocalStrategy(customFields, verifyCallback);
-
-passport.use(strategy);
-
-passport.serializeUser((user, done) => {
+passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser((userId, done) => {
-  User.findById(userId)
-    .then((user) => {
-      done(null, user);
-    })
-    .catch((err) => done(err));
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
+  });
 });
