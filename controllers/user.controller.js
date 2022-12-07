@@ -2,21 +2,27 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 const User = require("../models/userSchema");
 
-//const { genPassword } = require("../utilities/passwordUtils.js");
-
 exports.login = (req, res) => {
   // home page for app. will designate directions to login, sign up, or guest view via links
-  res.render("index", { title: "Log in", failureMessage: false });
+  res.render("index", {
+    title: "Log in",
+    failureMessage: false,
+    loggedIn: req.session.passport,
+  });
 };
 
 exports.login__post = passport.authenticate("local", {
   failureRedirect: "/",
   failureMessage: true,
-  successRedirect: "/signup",
+  successRedirect: "/welcome",
 });
 
 exports.signup__get = (req, res) => {
-  res.render("signup", { title: "Sign Up", passwordError: false });
+  res.render("signup", {
+    title: "Sign Up",
+    passwordError: false,
+    loggedIn: req.session.passport,
+  });
 };
 
 exports.signup__post = async (req, res) => {
@@ -39,4 +45,14 @@ exports.signup__post = async (req, res) => {
       console.log(err);
     }
   }
+};
+
+exports.logout__post = (req, res) => {
+  console.log("trying to log out");
+  req.logOut(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
 };

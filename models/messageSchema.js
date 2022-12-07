@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema({
+const messageSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -14,7 +14,10 @@ const postSchema = new mongoose.Schema({
     required: true,
   },
   author: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
   },
 });
+
+module.exports = mongoose.model("Message", messageSchema);

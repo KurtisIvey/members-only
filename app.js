@@ -1,9 +1,9 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const cookieParser = require("cookie-parser");
 const path = require("path");
 const port = 3001;
+const methodOverride = require("method-override");
 
 // auth
 const session = require("express-session");
@@ -14,6 +14,7 @@ const expressLayouts = require("express-ejs-layouts");
 
 //routes
 const indexRouter = require("./routes/index.route");
+const messageBoardRouter = require("./routes/messageBoard.route");
 
 // hide api key
 // API_KEY will come in through process.env as process.env.API_KEY
@@ -45,7 +46,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("layout", "layouts/layout");
 app.use(expressLayouts);
+app.use(methodOverride("_method"));
 
+// custom middleware to keep track of session information for coding purposes
+app.use((req, res, next) => {
+  console.log(req.session.passport);
+  next();
+});
 // passport config
 
 app.use((req, res, next) => {
@@ -54,6 +61,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/", indexRouter);
+app.use("/", messageBoardRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -68,7 +76,11 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.render("error", {
+    err: err,
+    title: "error",
+    loggedIn: req.session.passport,
+  });
 });
 
 module.exports = app;

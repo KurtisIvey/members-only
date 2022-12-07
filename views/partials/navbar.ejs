@@ -4,7 +4,14 @@
     <p>an exlusive messaging board for exclusive people</p>
   </div>
   <ul>
+    <% if (loggedIn !== undefined) { %>
+    <form action="/logout?_method=DELETE" method="POST">
+      <button type="submit">Log Out</button>
+    </form>
+
+    <%} else{%>
     <li><a href="/">Log In</a></li>
-    <li><a href="/categories">Sign Up</a></li>
+    <li><a href="/signup">Sign Up</a></li>
+    <%}%>
   </ul>
 </nav>
