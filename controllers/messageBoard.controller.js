@@ -1,4 +1,6 @@
-const posts = [
+const Post = require("../models/postSchema");
+
+/*const posts = [
   {
     title: "dogs",
     timestamp: "11-11-1111",
@@ -12,11 +14,33 @@ const posts = [
     author: "zoe I",
   },
 ];
+*/
 
-exports.welcome = (req, res) => {
-  res.render("welcome", {
+exports.welcome = async (req, res) => {
+  const posts = await Post.find({}).populate("author").exec();
+  res.render("messageBoard", {
     title: "Welcome",
     posts: posts,
     loggedIn: req.session.passport,
   });
+};
+
+exports.newPost = (req, res) => {
+  res.render("new-post", {
+    title: "New Post",
+    loggedIn: req.session.passport,
+  });
+};
+
+exports.newPost__post = async (req, res) => {
+  try {
+    const newPost = await new Post({
+      title: req.body.title,
+      textContent: req.body.textContent,
+      author: req.user._id,
+    }).save();
+    res.redirect("/messageBoard");
+  } catch (err) {
+    console.log(err);
+  }
 };

@@ -2,6 +2,8 @@
 @import './home.css';
 @import './navbar.css';
 @import './signup.css';
+@import './messageBoard.css';
+@import './newPost.css';
 
 @import './shared/btn.css';
 
@@ -30,6 +32,13 @@ form {
     background-color: inherit;
 }
 
-content {
-   
+.hidden {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden; 
 }
+
+input, textarea {box-sizing:border-box} 

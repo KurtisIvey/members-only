@@ -14,7 +14,7 @@ exports.login = (req, res) => {
 exports.login__post = passport.authenticate("local", {
   failureRedirect: "/",
   failureMessage: true,
-  successRedirect: "/welcome",
+  successRedirect: "/message-board",
 });
 
 exports.signup__get = (req, res) => {

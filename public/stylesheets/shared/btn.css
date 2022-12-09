@@ -11,3 +11,17 @@
     cursor: pointer;
     
 }
+
+.dangerBtn {
+    all: unset;
+    background-color: rgb(208, 119, 109);
+    justify-self: center;
+    color: white;
+    border-radius: 18px;
+    text-align: center;
+    width: 40%;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}

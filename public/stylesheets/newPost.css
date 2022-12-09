@@ -1,0 +1,32 @@
+.newPost__container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    min-width: 225px;
+    border-radius: 18px;
+    box-sizing: border-box;
+    padding: 30px;
+    background-color: #eef3ff;
+
+}
+    .newPost__container h2 {
+        color: rgb(60, 79, 167);
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    .newPost__container form {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        align-items: center;
+    }
+        .newPost__container form input, .newPost__container form textarea {
+            border: none;
+            margin: 10px 0;
+            width: 100%;
+            background-color: white;
+            border-radius: 18px;
+            padding: 10px;
+            min-width: 225px;
+
+        }

@@ -1,0 +1,17 @@
+<content class="newPost__container">
+  <h2>new post</h2>
+  <form action="/post/new-post" method="POST">
+    <label for="title" class="hidden">Post Title</label>
+    <input type="text" name="title" placeholder="Post Title" />
+    <label for="textContent" class="hidden">Post Content</label>
+    <textarea
+      id="textContent"
+      name="textContent"
+      placeHolder="What are your thoughts?"
+      rows="6"
+      cols="50"
+    ></textarea>
+    <button class="submitBtn" type="submit">Create Post</button>
+    <button class="dangerBtn">Cancel</button>
+  </form>
+</content>

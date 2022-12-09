@@ -51,6 +51,7 @@ app.use(methodOverride("_method"));
 // custom middleware to keep track of session information for coding purposes
 app.use((req, res, next) => {
   console.log(req.session.passport);
+  console.log(req.user);
   next();
 });
 // passport config
