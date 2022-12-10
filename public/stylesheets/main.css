@@ -6,6 +6,7 @@
 @import './newPost.css';
 
 @import './shared/btn.css';
+@import './shared/input.css';
 
 *{
     margin: 0;

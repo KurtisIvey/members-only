@@ -43,14 +43,13 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    background-color: #ebeff9;
-    border-radius: 18px;
+    background-color: #f8f8f8;
     width: 100%;
     padding: 10px;
-    margin: 15px 0;    
+    border-bottom: 1px solid grey;
 }
     .messageBoard__postContainer div, .messageBoard__postContainer p {
-        background-color: #ebeff9;
+        background-color: #f8f8f8;
     }
     .messageBoard__postTopRow {
         display: flex;

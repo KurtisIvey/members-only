@@ -36,8 +36,9 @@
         />
       </div>
     </div>
-    <% if (passwordError === true) { %>
-    <div class="signup__passwordError">Passwords do not match</div>
+    <% if (errors.find(elem => elem.param === 'confirmPassword') !== undefined)
+    { %>
+    <div class="inputError">Passwords do not match</div>
     <% } %>
     <div class="signup__inputRow">
       <label>Confirm Password</label>
@@ -54,8 +55,9 @@
         />
       </div>
     </div>
-    <% if (passwordError === true) { %>
-    <div class="signup__passwordError">Passwords do not match</div>
+    <% if (errors.find(elem => elem.param === 'confirmPassword') !== undefined)
+    { %>
+    <div class="inputError">Passwords do not match</div>
     <% } %>
 
     <button class="submitBtn" type="submit">Register</button>

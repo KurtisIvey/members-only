@@ -1,4 +1,5 @@
 require("dotenv").config();
+const createError = require("http-errors");
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -40,7 +41,7 @@ require("./config/passport.js");
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(flash());
+// parse response from express-validator
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
