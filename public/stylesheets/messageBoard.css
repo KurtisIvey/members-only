@@ -1,5 +1,4 @@
 .messageBoard__mainContainer {
-    border: 1px solid green;
     width: 100%;
     max-width: 90vw;
     height: 100%;
@@ -8,42 +7,79 @@
 
 .messageBoard__headerContainer {
     margin-top: 5vh;
+    margin-bottom: 15px;
     background-color: #eef3ff;
     border-radius: 18px;
-    padding: 10px;
+    padding: 25px 10px 10px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
     .messageBoard__headerContainer h2 {
         font-size: 2rem;
-        color: rgb(60, 79, 167);
 
     }
     .messageBoard__headerContainer a {
         all: unset;
         cursor: pointer;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        align-self: flex-end;
+        color: rgb(60, 79, 167);
+        margin-right: 5px;
+
     }
+        .messageBoard__headerContainer a:hover {
+            transform: scale(1.05);
+            color: rgb(67, 94, 218);
+
+        }
+
+.messageBoard__posts {
+    padding: 0 20px;
+}
 
 .messageBoard__postContainer {
+
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
+    background-color: #ebeff9;
     border-radius: 18px;
     width: 100%;
     padding: 10px;
-    margin-top: 20px;
-    
+    margin: 15px 0;    
 }
+    .messageBoard__postContainer div, .messageBoard__postContainer p {
+        background-color: #ebeff9;
+    }
     .messageBoard__postTopRow {
         display: flex;
         justify-content: space-between;
     }
+        .messageBoard__postDetails {
+            font-size: .6rem;
+        }
 
 
-    .messageBoard__postContainer h3 {
-        text-align: left;
-        font-size: 1.5rem;
+        .messageBoard__postContainer h3 {
+            text-align: left;
+            font-size: 1.5rem;
+        }
+
+        .messageBoard__deletePostBtn {
+            all: unset;
+            cursor: pointer;
+            color: rgb(239, 104, 104);
+            font-size: 1.4rem;
+            align-self: flex-start;
+        }
+            .messageBoard__deletePostBtn:hover {
+                color: rgb(178, 92, 92);
+                transform: scale(1.2);
+            }
+    .messageBoard__postContainer p {
+        height: fit-content;
+        min-height: 50px;
+        padding: 20px 10px 10px 20px;
+        font-size: 1rem;
     }

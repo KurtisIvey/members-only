@@ -3,18 +3,19 @@
     <h2>Welcome To Members Only</h2>
     <a href="/new-post">➕ Add Post</a>
   </div>
-  <% posts.forEach((post) => { %>
-  <div class="messageBoard__postContainer">
-    <div class="messageBoard__postTopRow">
-      <div class="messageBoard__postDetails">
-        <h3><%= post.title%></h3>
-        <div><%= post.author.username%></div>
-        <div><%= post.dateAndTime%></div>
+  <div class="messageBoard__posts">
+    <% posts.forEach((post) => { %>
+    <div class="messageBoard__postContainer">
+      <div class="messageBoard__postTopRow">
+        <div class="messageBoard__postDetails">
+          <h3><%= post.title%></h3>
+          <div>By <%= post.author.username%> at <%= post.dateAndTime%></div>
+        </div>
+        <button class="messageBoard__deletePostBtn">🗑️</button>
       </div>
-      <button>delete post</button>
-    </div>
 
-    <p><%= post.textContent%></p>
+      <p><%= post.textContent%></p>
+    </div>
+    <%})%>
   </div>
-  <%})%>
 </content>

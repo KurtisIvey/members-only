@@ -25,3 +25,9 @@
     margin-bottom: 15px;
     cursor: pointer;
 }
+
+.deleteBtn {
+    all: unset;
+    font-size: 1.5rem;
+    color: red;
+}

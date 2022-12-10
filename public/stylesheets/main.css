@@ -26,6 +26,7 @@ body {
 h1,h2,h3,h4,h5 {
     background-color: inherit;
     text-align: center;
+
 }
 
 form {
@@ -40,5 +41,7 @@ form {
     height:1px;
     overflow:hidden; 
 }
+
+
 
 input, textarea {box-sizing:border-box} 
