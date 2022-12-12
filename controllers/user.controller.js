@@ -50,18 +50,30 @@ exports.signup__post = [
       // had to add return due to constant [ERR_HTTP_HEADERS_SENT] error
       return;
     }
+    const usersWithSameUsername = await User.find({
+      username: req.body.username,
+    });
+    if (usersWithSameUsername.length > 0) {
+      errors.errors.push({ param: "username" });
+      res.render("signup", {
+        title: "Sign Up",
+        errors: errors.errors,
+        loggedIn: req.session.passport,
+      });
+    } else {
+      try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-    try {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-      const newUser = await new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: hashedPassword,
-      }).save();
-      res.send("sign up successful");
-    } catch (err) {
-      console.log(err);
+        const newUser = await new User({
+          username: req.body.username,
+          email: req.body.email,
+          password: hashedPassword,
+        }).save();
+        res.send("sign up successful");
+        console.log(`sign up successful for user: ${newUser.username}`);
+      } catch (err) {
+        console.log(err);
+      }
     }
   },
 ];

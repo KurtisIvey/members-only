@@ -8,6 +8,9 @@
         <input name="username" type="text" placeholder="username" required />
       </div>
     </div>
+    <% if (errors.find(elem => elem.param === 'username') !== undefined) { %>
+    <div class="inputError">Username is taken</div>
+    <% } %>
     <div class="signup__inputRow">
       <label>Email Address</label>
       <div class="signup__inputRowIconText">
