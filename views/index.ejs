@@ -30,6 +30,9 @@
         />
       </div>
     </div>
+    <% if (message) { %>
+    <div class="inputError"><%= message%></div>
+    <% } %>
     <button class="submitBtn" type="submit">Log In</button>
   </form>
   <div class="home__signUpRow">

@@ -39,6 +39,7 @@ app.set("view engine", "ejs");
 // passport setup and middleware
 require("./config/passport.js");
 app.use(passport.initialize());
+app.use(flash());
 app.use(passport.session());
 
 // parse response from express-validator
@@ -52,11 +53,12 @@ app.use(methodOverride("_method"));
 // custom middleware to keep track of session information for coding purposes
 app.use((req, res, next) => {
   console.log(req.session.passport);
-  console.log(req.user);
+  //////////////////////////// having issues getting error messages to display on login page
+  console.log(req.session.flash);
   next();
 });
-// passport config
 
+// passport config
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();

@@ -7,13 +7,15 @@ exports.login = (req, res) => {
   res.render("index", {
     title: "Log in",
     failureMessage: false,
+    session: req.session,
     loggedIn: req.session.passport,
+    message: req.flash("error"),
   });
 };
 
 exports.login__post = passport.authenticate("local", {
   failureRedirect: "/",
-  failureMessage: true,
+  failureFlash: true,
   successRedirect: "/message-board",
 });
 
