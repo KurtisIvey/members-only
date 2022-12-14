@@ -13,11 +13,15 @@ exports.login = (req, res) => {
   });
 };
 
-exports.login__post = passport.authenticate("local", {
-  failureRedirect: "/",
-  failureFlash: true,
-  successRedirect: "/message-board",
-});
+exports.login__post = [
+  body("username").trim().escape(),
+  body("password").trim().escape(),
+  passport.authenticate("local", {
+    failureRedirect: "/",
+    failureFlash: true,
+    successRedirect: "/message-board",
+  }),
+];
 
 exports.signup__get = (req, res) => {
   res.render("signup", {

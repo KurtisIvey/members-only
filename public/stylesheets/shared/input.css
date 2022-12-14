@@ -1,6 +1,6 @@
 .inputError {
     background-color: inherit;
+    text-align: center;
     color: red;
-    padding-left: 15px;
     font-size: .7rem;
 }
