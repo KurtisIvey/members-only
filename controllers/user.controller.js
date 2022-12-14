@@ -2,16 +2,20 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 const User = require("../models/userSchema");
 const { body, validationResult } = require("express-validator");
+const isLoggedIn = require("./authMiddleware").isLoggedIn;
 
-exports.login = (req, res) => {
-  res.render("index", {
-    title: "Log in",
-    failureMessage: false,
-    session: req.session,
-    loggedIn: req.session.passport,
-    message: req.flash("error"),
-  });
-};
+exports.login = [
+  isLoggedIn,
+  (req, res) => {
+    res.render("index", {
+      title: "Log in",
+      failureMessage: false,
+      session: req.session,
+      loggedIn: req.session.passport,
+      message: req.flash("error"),
+    });
+  },
+];
 
 exports.login__post = [
   body("username").trim().escape(),
@@ -23,13 +27,16 @@ exports.login__post = [
   }),
 ];
 
-exports.signup__get = (req, res) => {
-  res.render("signup", {
-    title: "Sign Up",
-    errors: [],
-    loggedIn: req.session.passport,
-  });
-};
+exports.signup__get = [
+  isLoggedIn,
+  (req, res) => {
+    res.render("signup", {
+      title: "Sign Up",
+      errors: [],
+      loggedIn: req.session.passport,
+    });
+  },
+];
 
 exports.signup__post = [
   body("username").trim().escape().isLength({ min: 3 }),
