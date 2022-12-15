@@ -12,4 +12,6 @@ router.get("/signUp", userController.signup__get);
 
 router.post("/signUp", userController.signup__post);
 
+router.get("/account-settings", userController.accountSettings);
+
 module.exports = router;

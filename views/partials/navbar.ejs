@@ -1,12 +1,18 @@
 <nav>
   <div class="site-title">
+    <% if (loggedIn !== undefined) { %>
+    <a href="/message-board"><h1>Members Only Messaging board</h1> </a>
+
+    <%} else{%>
     <a href="/"><h1>Members Only Messaging board</h1> </a>
+    <%}%>
     <p>an exlusive messaging board for exclusive people</p>
   </div>
   <ul>
     <% if (loggedIn !== undefined) { %>
+    <li><a href="/account-settings">Account Settings</a></li>
     <form action="/logout?_method=DELETE" method="POST">
-      <button type="submit">Log Out</button>
+      <li><button type="submit">Log Out</button></li>
     </form>
 
     <%} else{%>

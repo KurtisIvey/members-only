@@ -1,7 +1,7 @@
 <content class="messageBoard__mainContainer">
   <div class="messageBoard__headerContainer">
-    <h2>Welcome To Members Only</h2>
-    <a href="/new-post">➕ Add Post</a>
+    <h2>Welcome To the Members Only Messaging Board</h2>
+    <a href="message-board/new-post">➕ Add Post</a>
   </div>
   <div class="messageBoard__posts">
     <% posts.forEach((post) => { %>
@@ -11,7 +11,9 @@
           <h3><%= post.title%></h3>
           <div>By <%= post.author.username%> at <%= post.dateAndTime%></div>
         </div>
-        <button class="messageBoard__deletePostBtn">🗑️</button>
+        <form method="POST" action="/message-board/delete/<%=post.id%>">
+          <button type="submit" class="messageBoard__deletePostBtn">🗑️</button>
+        </form>
       </div>
 
       <p><%= post.textContent%></p>

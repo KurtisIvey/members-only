@@ -2,7 +2,7 @@ const Post = require("../models/postSchema");
 // isAuth implements a redirect through the validity of passport's req.isAuthenticated
 const isAuth = require("./authMiddleware").isAuth;
 
-exports.welcome = [
+exports.messageBoard = [
   isAuth,
   async (req, res) => {
     const posts = await Post.find({}).populate("author").exec();
@@ -31,6 +31,17 @@ exports.newPost__post = async (req, res) => {
       textContent: req.body.textContent,
       author: req.user._id,
     }).save();
+    res.redirect("/message-board");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.post__delete = async (req, res) => {
+  let post;
+  try {
+    post = await Post.findById(req.params.id);
+    await post.remove();
     res.redirect("/message-board");
   } catch (err) {
     console.log(err);

@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/userSchema");
 const { body, validationResult } = require("express-validator");
 const isLoggedIn = require("./authMiddleware").isLoggedIn;
+const isAuth = require("./authMiddleware").isAuth;
 
 exports.login = [
   isLoggedIn,
@@ -82,7 +83,7 @@ exports.signup__post = [
           email: req.body.email,
           password: hashedPassword,
         }).save();
-        res.send("sign up successful");
+        res.redirect("/");
         console.log(`sign up successful for user: ${newUser.username}`);
       } catch (err) {
         console.log(err);
@@ -100,3 +101,19 @@ exports.logout__post = (req, res) => {
     res.redirect("/");
   });
 };
+
+exports.accountSettings = [
+  isAuth,
+  async (req, res) => {
+    const currentUser = await User.findById(req.session.passport.user);
+    console.log(process.env.ADMINPASSWORD);
+    res.render("accountSettings", {
+      title: "Account Setting",
+      errors: [],
+      loggedIn: req.session.passport,
+      currentUser: currentUser,
+    });
+  },
+];
+
+exports.accountSettings__put = (req, res) => {};

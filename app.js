@@ -4,7 +4,6 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const port = 3001;
-const methodOverride = require("method-override");
 
 // auth
 const session = require("express-session");
@@ -32,6 +31,10 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+// use to allow update methods such as delete and put
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -65,7 +68,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/", indexRouter);
-app.use("/", messageBoardRouter);
+app.use("/message-board", messageBoardRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

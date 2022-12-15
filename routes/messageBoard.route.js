@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 const MessageBoardController = require("../controllers/messageBoard.controller.js");
 
-router.get("/message-board", MessageBoardController.welcome);
+router.get("/", MessageBoardController.messageBoard);
+
+router.post("/delete/:id", MessageBoardController.post__delete);
 
 router.get("/new-post", MessageBoardController.newPost);
 
