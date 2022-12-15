@@ -116,4 +116,18 @@ exports.accountSettings = [
   },
 ];
 
-exports.accountSettings__put = (req, res) => {};
+exports.accountSettings__put = async (req, res) => {
+  let currentUser;
+  try {
+    currentUser = await User.findById(req.session.passport.user);
+    currentUser.username = req.body.username;
+    currentUser.email = req.body.email;
+    if (req.body.adminPassword === process.env.ADMINPASSWORD) {
+      currentUser.admin = true;
+    }
+    await currentUser.save();
+    res.redirect("/message-board");
+  } catch (err) {
+    console.log(err);
+  }
+};
