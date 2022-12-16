@@ -75,6 +75,13 @@
                 color: rgb(178, 92, 92);
                 transform: scale(1.2);
             }
+        .messageBoard__deletePostBtnDisabled {
+            all: unset;
+            cursor: pointer;
+            color: rgb(140, 140, 140);
+            font-size: 1.4rem;
+            align-self: flex-start;
+        }
     .messageBoard__postContainer p {
         height: fit-content;
         min-height: 50px;

@@ -34,8 +34,8 @@
     </div>
 
     <div class="signup__inputRow">
-      <%if(currentUser.admin === true) {%> <%}%>
-      <label for="adminPassword">Top Secret Admin Password</label>
+      <%if(currentUser.admin === true) {%>
+      <label for="adminPassword">Currently an Admin</label>
       <div class="input__rowIconAndText">
         <div class="loginIcon">🔒</div>
         <input
@@ -45,9 +45,25 @@
           type="text"
           minlength="3"
           maxlength="44"
+          placeholder="enter 'Off' to remove"
           oninvalid="this.setCustomValidity('Enter the top secret admin password to enable admin features.')"
         />
       </div>
+      <%}else{%>
+      <label for="adminPassword">Top Secret Admin Password</label>
+      <div class="input__rowIconAndText">
+        <div class="loginIcon">🔒</div>
+        <input
+          id="adminPassword"
+          autocomplete="off"
+          name="adminPassword"
+          type="password"
+          minlength="3"
+          maxlength="44"
+          oninvalid="this.setCustomValidity('Enter the top secret admin password to enable admin features.')"
+        />
+      </div>
+      <%}%>
     </div>
 
     <button class="submitBtn" type="submit">Update</button>

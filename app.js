@@ -57,13 +57,13 @@ app.use(methodOverride("_method"));
 app.use((req, res, next) => {
   console.log(req.session.passport);
   //////////////////////////// having issues getting error messages to display on login page
-  console.log(req.session.flash);
   next();
 });
 
 // passport config
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
+  console.log(res.locals.currentUser);
   next();
 });
 

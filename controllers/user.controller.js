@@ -116,18 +116,26 @@ exports.accountSettings = [
   },
 ];
 
-exports.accountSettings__put = async (req, res) => {
-  let currentUser;
-  try {
-    currentUser = await User.findById(req.session.passport.user);
-    currentUser.username = req.body.username;
-    currentUser.email = req.body.email;
-    if (req.body.adminPassword === process.env.ADMINPASSWORD) {
-      currentUser.admin = true;
+exports.accountSettings__put = [
+  body("username").trim().escape(),
+  body("email").trim().escape(),
+  body("adminPassword").trim().escape(),
+  async (req, res) => {
+    let currentUser;
+    try {
+      currentUser = await User.findById(req.session.passport.user);
+      currentUser.username = req.body.username;
+      currentUser.email = req.body.email;
+      if (req.body.adminPassword === process.env.ADMINPASSWORD) {
+        currentUser.admin = true;
+      }
+      if (req.body.adminPassword === "Off") {
+        currentUser.admin = false;
+      }
+      await currentUser.save();
+      res.redirect("/message-board");
+    } catch (err) {
+      console.log(err);
     }
-    await currentUser.save();
-    res.redirect("/message-board");
-  } catch (err) {
-    console.log(err);
-  }
-};
+  },
+];
