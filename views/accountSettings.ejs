@@ -1,6 +1,6 @@
 <content class="signup__contentContainer">
   <h2 class="signup__message">Update Profile</h2>
-  <form action="/signUp" method="POST">
+  <form action="/account-settings" method="POST">
     <div class="signup__inputRow">
       <label>Username</label>
       <div class="signup__inputRowIconText">
@@ -18,11 +18,12 @@
     <div class="inputError">Username is taken</div>
     <% } %>
     <div class="signup__inputRow">
-      <label>Email Address</label>
+      <label for="email">Email Address</label>
       <div class="signup__inputRowIconText">
         <div class="loginIcon">✉️</div>
         <input
           value="<%=currentUser.email %>"
+          id="email"
           name="email"
           type="email"
           placeholder="email@gmail.com"
@@ -33,15 +34,17 @@
     </div>
 
     <div class="signup__inputRow">
-      <label>Top Secret Admin Password</label>
+      <%if(currentUser.admin === true) {%> <%}%>
+      <label for="adminPassword">Top Secret Admin Password</label>
       <div class="input__rowIconAndText">
         <div class="loginIcon">🔒</div>
         <input
+          id="adminPassword"
           autocomplete="off"
           name="adminPassword"
           type="text"
           minlength="3"
-          maxlength="20"
+          maxlength="44"
           oninvalid="this.setCustomValidity('Enter the top secret admin password to enable admin features.')"
         />
       </div>
