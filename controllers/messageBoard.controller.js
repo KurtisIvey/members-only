@@ -6,7 +6,10 @@ const { body, validationResult } = require("express-validator");
 exports.messageBoard = [
   isAuth,
   async (req, res) => {
-    const posts = await Post.find({}).populate("author").exec();
+    const posts = await Post.find({})
+      .sort({ timestamp: -1 })
+      .populate("author")
+      .exec();
     res.render("messageBoard", {
       title: "Welcome",
       posts: posts,

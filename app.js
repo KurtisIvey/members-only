@@ -7,6 +7,7 @@ const port = 3001;
 
 // auth
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("express-flash");
 const passport = require("passport");
 // simplifies ejs by using layouts
@@ -21,7 +22,14 @@ const messageBoardRouter = require("./routes/messageBoard.route");
 //console.log(process.env);
 
 //session
-app.use(session({ secret: "hi", resave: false, saveUninitialized: true }));
+app.use(
+  session({
+    secret: "hi",
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: process.env.DB_URI }),
+  })
+);
 
 //mongodb
 const mongoose = require("mongoose");
