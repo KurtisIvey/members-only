@@ -63,16 +63,15 @@ app.use(expressLayouts);
 app.use(methodOverride("_method"));
 
 // custom middleware to keep track of session information for coding purposes
-app.use((req, res, next) => {
-  console.log(req.session.passport);
-  //////////////////////////// having issues getting error messages to display on login page
-  next();
-});
+//app.use((req, res, next) => {
+//  console.log(req.session.passport);
+//////////////////////////// having issues getting error messages to display on login page
+//  next();
+//});
 
 // passport config
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
-  console.log(res.locals.currentUser);
   next();
 });
 

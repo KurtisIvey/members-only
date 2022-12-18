@@ -84,7 +84,7 @@ exports.signup__post = [
           password: hashedPassword,
         }).save();
         res.redirect("/");
-        console.log(`sign up successful for user: ${newUser.username}`);
+        //console.log(`sign up successful for user: ${newUser.username}`);
       } catch (err) {
         console.log(err);
       }
@@ -106,7 +106,6 @@ exports.accountSettings = [
   isAuth,
   async (req, res) => {
     const currentUser = await User.findById(req.session.passport.user);
-    console.log(process.env.ADMINPASSWORD);
     res.render("accountSettings", {
       title: "Account Setting",
       errors: [],
