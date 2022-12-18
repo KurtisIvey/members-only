@@ -24,9 +24,10 @@ const messageBoardRouter = require("./routes/messageBoard.route");
 //session
 app.use(
   session({
-    secret: "hi",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    //store sessions in mongo to avoid mem leaks reported on heroku
     store: MongoStore.create({ mongoUrl: process.env.DB_URI }),
   })
 );
