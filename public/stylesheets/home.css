@@ -1,106 +1,95 @@
 .home__contentContainer {
-    border-radius: 18px;
-    background-color: #eef3ff;
-    width: 300px;
-    height: 400px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+  border-radius: 18px;
+  background-color: #eef3ff;
+  width: 300px;
+  height: 400px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .home__welcome {
-    font-size: 2rem;
-    padding: 20px;
-    color: rgb(60, 79, 167);
-
+  font-size: 2rem;
+  padding: 20px;
+  color: rgb(60, 79, 167);
 }
 
 .input__row {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 15px;
-    margin: 10px 0px;
-    border-radius: 18px;
-    background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+  margin: 10px 0px;
+  border-radius: 18px;
+  background-color: white;
 }
-    .input__row label {
-        background-color: inherit;
-        color: rgb(76, 76, 76);
-        font-size: .8rem;
+.input__row label {
+  background-color: inherit;
+  color: rgb(76, 76, 76);
+  font-size: 0.8rem;
+}
+.input__row div {
+  display: flex;
+  margin-top: 3px;
+}
+.input__rowIconAndText {
+  background-color: white;
+}
 
+.loginIcon {
+  background-color: white;
+  padding-bottom: 2px;
+}
 
-    }
-    .input__row div {
-        display: flex;
-        margin-top: 3px;
-    }
-    .input__rowIconAndText {
-        background-color: white;
-    }
-    
-    .loginIcon {
-        background-color: white;
-        padding-bottom: 2px;
-    }
-
-    .input__row div input {
-        background-color: white;
-        margin-left: 5px;
-        border: none;
-        
-    }
-    .input__row div input:focus {
-        outline: none;
-    }
-
+.input__row div input {
+  background-color: white;
+  margin-left: 5px;
+  border: none;
+}
+.input__row div input:focus {
+  outline: none;
+}
 
 .loginBtn {
-    all: unset;
-    background-color: rgb(60, 79, 167);
-    color: white;
-    border-radius: 18px;
-    text-align: center;
-    width: 100%;
-    height: 35px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    cursor: pointer;
-    
+  all: unset;
+  background-color: rgb(60, 79, 167);
+  color: white;
+  border-radius: 18px;
+  text-align: center;
+  width: 100%;
+  height: 35px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .home__signUpRow {
-    background-color: inherit;
-    width: 100%;
+  background-color: inherit;
+  width: 100%;
 }
 
 .home__signUpRow h2 {
-    font-size: .85rem;
-    color: rgb(76, 76, 76);
-
+  font-size: 0.85rem;
+  color: rgb(76, 76, 76);
 }
 
 .button__row {
-    background-color: inherit;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 10px 15px;
-    justify-items: center;
+  background-color: inherit;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 10px 15px;
+  justify-items: center;
 }
-    .button__row button {
-        all: unset;
-        font-size: .7rem;
-        cursor: pointer;
-        color: rgb(60, 79, 167);
-        width: fit-content;
-
-    }
-    .button__row button a {
-        background-color: inherit;
-        text-decoration: none;
-
-    }
-    .button__row button a:visited {
-        color: inherit;
-    }
-
+.button__row button {
+  all: unset;
+  font-size: 0.7rem;
+  cursor: pointer;
+  color: rgb(60, 79, 167);
+  width: fit-content;
+}
+.button__row button a {
+  background-color: inherit;
+  text-decoration: none;
+}
+.button__row button a:visited {
+  color: inherit;
+}
