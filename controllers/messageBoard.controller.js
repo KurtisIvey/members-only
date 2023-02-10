@@ -1,7 +1,7 @@
 const Post = require("../models/postSchema");
 // isAuth implements a redirect through the validity of passport's req.isAuthenticated
 const isAuth = require("./authMiddleware").isAuth;
-const { body, validationResult } = require("express-validator");
+const { body } = require("express-validator");
 
 exports.messageBoard = [
   isAuth,
@@ -50,10 +50,7 @@ exports.post__delete = async (req, res) => {
   let post;
   try {
     post = await Post.findById(req.params.id);
-    if (
-      res.locals.currentUser._id === post.author ||
-      res.locals.currentUser.admin === true
-    ) {
+    if (res.locals.currentUser.admin === true) {
       await post.remove();
     }
 

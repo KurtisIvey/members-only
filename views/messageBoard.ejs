@@ -12,8 +12,7 @@
           <div>By <%= post.author.username%> at <%= post.dateAndTime%></div>
         </div>
         <form method="POST" action="/message-board/delete/<%=post.id%>">
-          <% if(user.username === post.author.username || user.admin === true)
-          {%>
+          <% if( user.admin === true) {%>
           <button type="submit" class="messageBoard__deletePostBtn">🗑️</button>
           <%}else { %>
           <button
